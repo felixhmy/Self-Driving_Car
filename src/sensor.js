@@ -1,30 +1,26 @@
 class Sensor{
+    //Se llama a "car" ya que se emiten y se trasladan en el objeto
     constructor(car){
-        this.car=car;
-        this.rayCount=5;
-        this.rayLength=150;
-        this.raySpread=Math.PI/2;
+        this.car = car;
+        this.rayCount = 5; //Nº de rayos
+        this.rayLength = 150; //Distancia de los rayos
+        this.raySpread = Math.PI/1.5; //Angulo de visión
 
-        this.rays=[];
-        this.readings=[];
+        this.rays = [];
+        this.readings = [];
     }
 
-    update(roadBorders,traffic){
+    update(roadBorders, traffic){
         this.#castRays();
-        this.readings=[];
+        this.readings = [];
         for(let i=0;i<this.rays.length;i++){
-            this.readings.push(
-                this.#getReading(
-                    this.rays[i],
-                    roadBorders,
-                    traffic
-                )
-            );
+            this.readings.push(this.#getReading(this.rays[i],roadBorders, traffic));
         }
     }
 
+    //Función privada que lee los rayos que colisionan
     #getReading(ray,roadBorders,traffic){
-        let touches=[];
+        let touches = [];
 
         for(let i=0;i<roadBorders.length;i++){
             const touch=getIntersection(
@@ -38,10 +34,10 @@ class Sensor{
             }
         }
 
-        for(let i=0;i<traffic.length;i++){
-            const poly=traffic[i].polygon;
+        for (let i=0;i<traffic.length;i++){
+            const poly = traffic[i].polygon;
             for(let j=0;j<poly.length;j++){
-                const value=getIntersection(
+                const value = getIntersection(
                     ray[0],
                     ray[1],
                     poly[j],
@@ -53,6 +49,7 @@ class Sensor{
             }
         }
 
+
         if(touches.length==0){
             return null;
         }else{
@@ -62,36 +59,38 @@ class Sensor{
         }
     }
 
+
+    //Función privada que posiciona los rayos
     #castRays(){
-        this.rays=[];
+        this.rays = [];
         for(let i=0;i<this.rayCount;i++){
-            const rayAngle=lerp(
+            const rayAngle = lerp(
                 this.raySpread/2,
                 -this.raySpread/2,
-                this.rayCount==1?0.5:i/(this.rayCount-1)
-            )+this.car.angle;
+                this.rayCount == 1?0.5: i/(this.rayCount-1)
+            ) + this.car.angle;
 
-            const start={x:this.car.x, y:this.car.y};
-            const end={
-                x:this.car.x-
-                    Math.sin(rayAngle)*this.rayLength,
-                y:this.car.y-
-                    Math.cos(rayAngle)*this.rayLength
+            const start = {x:this.car.x, y:this.car.y};
+            const end = {
+                x:this.car.x - Math.sin(rayAngle) * this.rayLength,
+                y:this.car.y - Math.cos(rayAngle) * this.rayLength
             };
             this.rays.push([start,end]);
         }
     }
 
+    //Imprime los sensores en pantalla
     draw(ctx){
         for(let i=0;i<this.rayCount;i++){
-            let end=this.rays[i][1];
+            let end = this.rays[i][1];
             if(this.readings[i]){
-                end=this.readings[i];
+                end = this.readings[i];
             }
 
+            //Rayos sin colisionar
             ctx.beginPath();
-            ctx.lineWidth=2;
-            ctx.strokeStyle="yellow";
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "yellow";
             ctx.moveTo(
                 this.rays[i][0].x,
                 this.rays[i][0].y
@@ -102,9 +101,10 @@ class Sensor{
             );
             ctx.stroke();
 
+            //Rayos que colisionan
             ctx.beginPath();
             ctx.lineWidth=2;
-            ctx.strokeStyle="black";
+            ctx.strokeStyle="lightblue";
             ctx.moveTo(
                 this.rays[i][1].x,
                 this.rays[i][1].y

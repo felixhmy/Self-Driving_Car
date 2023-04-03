@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<head>
-    <title>Self-driving car - No libraries</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <canvas id="carCanvas"></canvas>
-    <div id="verticalButtons">
-        <button onclick="save()">💾</button>
-        <button onclick="discard()">🗑️</button>
-    </div>
-    <canvas id="networkCanvas"></canvas>
-    <script src="visualizer.js"></script>
-    <script src="network.js"></script>
-    <script src="sensor.js"></script>
-    <script src="utils.js"></script>
-    <script src="road.js"></script>
-    <script src="controls.js"></script>
-    <script src="car.js"></script>
-    <script src="main.js"></script>
-</body>
+<html>
+    <head>
+        <title>Self-Driving Car</title>
+        <link href = "style.css" type = "text/css" rel = "stylesheet" media="">
+    </head>
+
+    <body>
+        <canvas id = "carCanvas"></canvas>
+
+        <div id = "verticalButtons">
+            <button onclick="save()">💾</button>
+            <button onclick="discard()">🗑️</button>
+        </div>
+
+        <canvas id = "networkCanvas"></canvas>
+
+        <script src = "src/visualizer.js"></script>
+        <script src = "src/network.js"></script>
+        <script src = "src/sensor.js"></script>
+        <script src = "src/utils.js"></script>
+        <script src = "src/road.js"></script>
+        <script src = "src/controls.js"></script>
+        <script src = "src/car.js"></script>
+        <script src = "src/main.js"></script>
+    </body>
+
 </html>
