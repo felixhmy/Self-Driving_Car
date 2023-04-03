@@ -16,7 +16,8 @@ class Car{
         //La neuronal Network tiene acceso a los controles
         this.useBrain = controlType == "AI";
 
-        //En el main se asigna un valor a controlType donde "AI" es el coche controlado y "BOT" son los bots
+        //En el main se asigna un valor a controlType donde 
+        //"AI" es el coche controlado y "BOT" son los bots
         if(controlType!= "BOT"){
             //Llamadas a la clase de los sensores y de los controles
             this.sensor = new Sensor(this);

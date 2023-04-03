@@ -13,9 +13,11 @@ const networkCtx = networkCanvas.getContext("2d");
 const road = new Road(carCanvas.width / 2,carCanvas.width * 0.9);
 
 //Llama al coche
-const N = 100; //Numero de coches
+const N = 1000; //Numero de coches
 const cars = generateCars(N);
 let bestCar = cars[0];
+
+var BOTcars = 100;
 
 //Número de veces que se muta 
 var nMutaciones = 0;
@@ -36,16 +38,35 @@ if(localStorage.getItem("bestBrain")){
 
 //Array de todos los coches del tráfico
 const traffic = [
-    new Car(road.getLaneCenter(1),-100,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(0),-300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(2),-300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(0),-500,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(1),-500,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(1),-700,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(2),-700,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1500,30,50,"BOT", 2),
+
 ];
 
+
+//Genera coches de forma aleatoria
+for (let i=0;i<BOTcars;i++){
+    for (let j= 200;i<BOTcars;j+200){
+        traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*3)),(-100-j),30,50,"BOT", 2));
+    }
+    
+}
+
 animate();
+
 
 //Guarda la información del coche que mejor actua en un JSON
 function save(){
