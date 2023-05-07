@@ -58,12 +58,14 @@ const traffic = [
 
 
 //Genera coches de forma aleatoria
+/*
 for (let i=0;i<BOTcars;i++){
     for (let j= 200;i<BOTcars;j+200){
         traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*3)),(-100-j),30,50,"BOT", 2));
     }
     
 }
+*/
 
 animate();
 
