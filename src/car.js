@@ -1,5 +1,5 @@
 class Car{
-    constructor(x,y,width,height, controlType, maxSpeed = 3){
+    constructor(x,y,width,height, controlType, maxSpeed = 3, color = "red"){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -26,6 +26,27 @@ class Car{
         }
 
         this.controls = new Controls(controlType);
+
+
+        // Se añade la imagen del coche
+        this.img = new Image();
+        this.img.src = "../car.png";
+
+        // Se crea una mascara para aplicar el color a la imagen del coche
+        this.mask = document.createElement("canvas");
+        this.mask.width = width;
+        this.mask.height = height;
+
+        const maskCtx = this.mask.getContext("2d");
+        this.img.onload = () => {
+            maskCtx.fillStyle = color;
+            maskCtx.rect(0,0,this.width,this.height);
+            maskCtx.fill();
+
+            maskCtx.globalCompositeOperation = "destination-atop"
+            maskCtx.drawImage(this.img,0,0,this.width,this.height);
+        }
+
     }
 
     //Update con los datos de los bordes de la carretera
@@ -141,20 +162,20 @@ class Car{
 
 
     //Draw que imprime el coche en pantalla en base a los puntos del polygon
-    draw(ctx, color, drawSensor=false){
-        if(this.damaged){
-            ctx.fillStyle = "darkred"
-        }else{
-            ctx.fillStyle = color;
+    draw(ctx, drawSensor=false){
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(-this.angle);
+
+        // Si no se ha golpeado, se imprime el color del coche
+        if(!this.damaged){
+            ctx.drawImage(this.mask, -this.width/2, -this.height/2, this.width, this.height);
+            ctx.globalCompositeOperation = "multiply";
         }
         
-        ctx.beginPath();
+        ctx.drawImage(this.img, -this.width/2, -this.height/2, this.width, this.height);
+        ctx.restore();
 
-        ctx.moveTo(this.polygon[0].x, this.polygon[0].y);
-        for(let i=1;i<this.polygon.length;i++){
-            ctx.lineTo(this.polygon[i].x, this.polygon[i].y);
-        }
-        ctx.fill();
 
         
         if(this.sensor && drawSensor){

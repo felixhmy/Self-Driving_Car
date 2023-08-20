@@ -38,21 +38,21 @@ if(localStorage.getItem("bestBrain")){
 
 //Array de todos los coches del tráfico
 const traffic = [
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2),
-    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1500,30,50,"BOT", 2),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-100,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-300,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-500,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-700,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-900,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1100,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1300,30,50,"BOT", 2,"blue"),
+    new Car(road.getLaneCenter(Math.floor(Math.random()*3)),-1500,30,50,"BOT", 2,"blue"),
 
 ];
 
@@ -132,10 +132,10 @@ function animate(time){
     carCtx.globalAlpha = 0.2;
     
     for(let i=0;i<cars.length;i++){
-        cars[i].draw(carCtx,"red");
+        cars[i].draw(carCtx);
     }
     carCtx.globalAlpha = 1;
-    bestCar.draw(carCtx,"red", true);
+    bestCar.draw(carCtx, true);
 
 
 
