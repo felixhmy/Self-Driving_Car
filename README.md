@@ -1,3 +1,6 @@
-# Coche autónomo
-Creada una red neuronal sin biblioteca creada en JavaScript. 
-Esta diseñado para que se puede mejorar el funcionamiento de la IA mediante aprendizaje.
+# Self-driving car
+
+a Neural Network created in JavaScript without the use of libraries.
+
+A car that drives autonomously, dodging vehicles that appear in the three available lanes while moving forward.
+The design allows the neural network to learn automatically as it runs.
