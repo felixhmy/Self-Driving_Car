@@ -1,5 +1,5 @@
 © 2025 Félix Hernández
 
-Todos los derechos reservados.
+All rights reserved.
 
-Se permite la visualización de este código fuente únicamente con fines informativos y de referencia. No se concede permiso para copiar, distribuir, modificar o utilizar este código en ninguna forma sin el consentimiento previo y por escrito del titular del copyright.
+This source code is only allowed to be viewed for informational and reference purposes. Permission is not granted to copy, distribute, modify, or use this code in any way without the prior written consent of the copyright holder.
